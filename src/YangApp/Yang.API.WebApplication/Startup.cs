@@ -37,7 +37,8 @@ namespace Yang.API.WebApplication
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication(); //认证在前
+            app.UseAuthorization(); //授权在后
 
             app.UseEndpoints(endpoints =>
             {

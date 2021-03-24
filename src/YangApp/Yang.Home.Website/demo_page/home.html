@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js\howler\howler.min.js"></script>
+    <link rel="stylesheet" href="css/site.css" />
+
+</head>
+
+<body>
+    <h1 style="font-size:80px; text-align:center; padding:50px; color:#808080;">一味愚</h1>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md">
+
+                <div class="story">
+
+                    <a href="story.html" target="_blank">
+                        <figure class="figure">
+                            <img src="img/story2.png" class="figure-img img-fluid rounded" alt="...">
+                            <figcaption class="figure-caption">
+                                <p class="story-title">这是一个故事标题.</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-md">
+
+                <div class="story">
+                    <a href="story.html" target="_blank">
+                        <figure class="figure">
+                            <img src="img/story3.png" class="figure-img img-fluid rounded" alt="...">
+                            <figcaption class="figure-caption">
+                                <p class="story-title">这是一个故事标题.</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <script>
+        var PlayData = {
+            currentIndex: 0,
+            audios: [['mp3/shdy.mp3'], ['mp3/ndda.mp3']],
+            howl: null
+        };
+
+        function Play() {
+            Switch();
+            PlayData.howl.play();
+        }
+
+        function Switch() {
+            if (PlayData.currentIndex >= PlayData.audios.length)
+                PlayData.currentIndex = 0;
+
+            PlayData.howl = new Howl({
+                src: PlayData.audios[PlayData.currentIndex],
+                /*autoplay: true,*/
+                onend: function () {
+                    PlayData.currentIndex++;
+                    Play();
+                }
+            })
+        }
+
+        Play();
+    </script>
+</body>
+</html>
